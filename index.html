@@ -14,44 +14,41 @@
             <form class="converter">
                 <label class="field">
                     <span>Valor</span>
-                    <input type="number" value="100" min="0" step="0.01" placeholder="Digite o valor">
+                    <input id="valor" type="number" value="100" min="0" step="0.01" placeholder="Digite o valor">
                 </label>
 
                 <div class="row">
                     <label class="field">
                         <span>De</span>
-                        <select>
-                            <option>BRL</option>
-                            <option>USD</option>
-                            <option>EUR</option>
-                            <option>GBP</option>
+                        <select id="moedaOrigem">
+                            <option value="BRL">BRL</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
                         </select>
                     </label>
 
                     <label class="field">
                         <span>Para</span>
-                        <select>
-                            <option>USD</option>
-                            <option>BRL</option>
-                            <option>EUR</option>
-                            <option>GBP</option>
+                        <select id="moedaDestino">
+                            <option value="USD">USD</option>
+                            <option value="BRL">BRL</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
                         </select>
                     </label>
                 </div>
 
-                <button id="btn-converter" name="btn-converter">Converter</button>
+                <button id="btn-converter" name="btn-converter" type="button">Converter</button>
             </form>
 
             <div class="result-box">
                 <h2>Resultado:</h2>
-                <p id="resultado">0</p> 
+                <p id="resultado">0</p>
             </div>
         </section>
     </main>
-    
-    <!-- Script para importar o arquivo -->
+
     <script type="module" src="assets/js/app.js"></script>
-   
-  
 </body>
 </html>

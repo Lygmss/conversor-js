@@ -1,37 +1,28 @@
-import { moedaOrigem, moeda} from './funcoes.js';
-// Selecionar o botão "Calcular" pelo ID
-const btnconverter = document.getElementById('btn-converter');
+import { converterMoeda } from './funcoes.js';
 
-// Agregar un evento de clicar no botão "Converter"
-btnconverter.addEventListener("click", converter);
+const btnConverter = document.getElementById('btn-converter');
+const valorInput = document.getElementById('valor');
+const moedaOrigemSelect = document.getElementById('moedaOrigem');
+const moedaDestinoSelect = document.getElementById('moedaDestino');
+const resultadoElement = document.getElementById('resultado');
 
-// Função para calcular o resultado da operação selecionada
-function converter(){
+function atualizarResultado() {
+    const valor = Number(valorInput.value);
+    const moedaOrigem = moedaOrigemSelect.value;
+    const moedaDestino = moedaDestinoSelect.value;
 
-    // Obter os valores dos inputs e da operação selecionada
-    const moedaOrigem = moedaOrigem(document.getElementById("moedaOrigem").value);
-    const moedaConvertida = moedaConvertida(document.getElementById("moedaConvertida").value);
-
-    const moeda = document.getElementById("moeda").value;
-
-    // Declarar uma variável para armazenar o resultado da operação
-    let resultado;
-
-    // Usar um switch para determinar qual operação realizar com base na seleção do usuário
-    switch (moeda) {
-
-        // Caso para a operação de conversão de moeda
-        case "USD":
-            resultado = valor * 5.90; // Exemplo de conversão para USD
-            // Retornar o resultado da soma
-            break;
-
-        case "EUR":
-            resultado = valor * 6.10; // Exemplo de conversão para EUR
-            break;  
-
+    if (!Number.isFinite(valor) || valor <= 0) {
+        resultadoElement.textContent = 'Informe um valor válido.';
+        return;
     }
 
-    // Exibir o resultado da operação no elemento com ID "resultado"
-    document.getElementById("resultado").textContent = resultado;  
+    const valorConvertido = converterMoeda(valor, moedaOrigem, moedaDestino);
+    resultadoElement.textContent = `${valor.toFixed(2)} ${moedaOrigem} = ${valorConvertido.toFixed(2)} ${moedaDestino}`;
 }
+
+btnConverter.addEventListener('click', atualizarResultado);
+valorInput.addEventListener('input', atualizarResultado);
+moedaOrigemSelect.addEventListener('change', atualizarResultado);
+moedaDestinoSelect.addEventListener('change', atualizarResultado);
+
+atualizarResultado();
