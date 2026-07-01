@@ -26,3 +26,18 @@ moedaOrigemSelect.addEventListener('change', atualizarResultado);
 moedaDestinoSelect.addEventListener('change', atualizarResultado);
 
 atualizarResultado();
+
+//CORREÇÃO:
+// const valor = Number(document.getElementById('valor').value);
+// const moeda = document.getElementById('moeda').value;
+// let resultado;
+// switch (moeda) {
+//     case 'USD':
+//         resultado = converterParaDolar(valor);
+//         break;
+//     case 'EUR':
+//         resultado = converterParaEuro(valor);
+//         break;
+//     console.log('resultado');
+// }
+// document.getElementById('resultado').textContent = resultado.toFixed(2);
