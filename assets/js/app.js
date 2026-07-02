@@ -1,4 +1,4 @@
-import { converterMoeda } from './funcoes.js';
+import { converterMoeda, exibirMensagem } from './funcoes.js';
 
 const btnConverter = document.getElementById('btn-converter');
 const valorInput = document.getElementById('valor');
@@ -7,16 +7,16 @@ const moedaDestinoSelect = document.getElementById('moedaDestino');
 const resultadoElement = document.getElementById('resultado');
 
 function atualizarResultado() {
-    const valor = Number(valorInput.value);
-    const moedaOrigem = moedaOrigemSelect.value;
-    const moedaDestino = moedaDestinoSelect.value;
+  const valor = Number(valorInput.value);
+   const moedaOrigem = moedaOrigemSelect.value;
+   const moedaDestino = moedaDestinoSelect.value;
 
-    if (!Number.isFinite(valor) || valor <= 0) {
+  if (!Number.isFinite(valor) || valor <= 0) {
         resultadoElement.textContent = 'Informe um valor válido.';
-        return;
-    }
+      return;
+     }
 
-    const valorConvertido = converterMoeda(valor, moedaOrigem, moedaDestino);
+  const valorConvertido = converterMoeda(valor, moedaOrigem, moedaDestino);
     resultadoElement.textContent = `${valor.toFixed(2)} ${moedaOrigem} = ${valorConvertido.toFixed(2)} ${moedaDestino}`;
 }
 
@@ -28,16 +28,16 @@ moedaDestinoSelect.addEventListener('change', atualizarResultado);
 atualizarResultado();
 
 //CORREÇÃO:
-// const valor = Number(document.getElementById('valor').value);
-// const moeda = document.getElementById('moeda').value;
-// let resultado;
-// switch (moeda) {
-//     case 'USD':
-//         resultado = converterParaDolar(valor);
-//         break;
-//     case 'EUR':
-//         resultado = converterParaEuro(valor);
-//         break;
-//     console.log('resultado');
-// }
-// document.getElementById('resultado').textContent = resultado.toFixed(2);
+//const valor = Number(document.getElementById('valor').value);
+//const moeda = document.getElementById('moeda').value;
+let resultado;
+switch (converterMoeda) {
+     case 'USD':
+         resultado = converterParaDolar(valor, exibirMensagem);
+         break;
+     case 'EUR':
+         resultado = converterParaEuro(valor, exibirMensagem);
+         break;
+     console.log('resultado');
+ }
+ document.getElementById('resultado').textContent = resultado.toFixed(2);
